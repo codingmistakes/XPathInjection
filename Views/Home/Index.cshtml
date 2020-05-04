@@ -1,0 +1,61 @@
+﻿@model List<XPathInjection.Models.Offer>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<center>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Search through Offers</h2>
+        </div>
+    </div>
+
+    <br/>
+
+    <div style="width: 50%">
+        <form action="/Home/Search">
+            <div class="input-group mb-3">
+                <input type="text" value="@ViewBag.Search" name="title" class="form-control" placeholder="Enter offer title">
+                <div class="input-group-append">
+                    <button class="btn btn-info" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</center>
+
+<br />
+<br />
+<table class="table table-hover table-striped">
+    <caption>@Model.Count offers listed</caption>
+    <thead>
+        <tr>
+            <th scope="col">Offer ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Total</th>
+            <th scope="col">Reference</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (XPathInjection.Models.Offer offer in Model)
+        {
+        <tr>
+            <td class="table-dark">
+                @Html.DisplayFor(modelItem => offer.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => offer.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => offer.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => offer.Reference)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
